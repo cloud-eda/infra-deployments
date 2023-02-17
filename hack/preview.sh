@@ -190,6 +190,15 @@ if ! git diff --exit-code --quiet; then
     git push -f --set-upstream $MY_GIT_FORK_REMOTE $PREVIEW_BRANCH
 fi
 
+TEKTON_RESULTS_DATABASE_USER="admin"
+TEKTON_RESULTS_DATABASE_PASSWORD="admin"
+oc new-project tekton-results
+oc create secret generic -n tekton-results tekton-results-database \
+  --from-literal=db.user="$TEKTON_RESULTS_DATABASE_USER" \
+  --from-literal=db.password="$TEKTON_RESULTS_DATABASE_PASSWORD" \
+  --from-literal=db.host="tekton-results-database-service.tekton-results.svc.cluster.local" \
+  --from-literal=db.name="tekton_results"
+
 # Create the root Application
 oc apply -k $ROOT/argo-cd-apps/app-of-app-sets/development
 
