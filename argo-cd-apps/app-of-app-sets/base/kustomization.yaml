@@ -5,3 +5,4 @@ resources:
 components:
   - ../../k-components/inject-argocd-namespace
   - ../../k-components/inject-infra-deployments-repo-details
+  # 
