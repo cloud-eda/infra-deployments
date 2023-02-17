@@ -192,12 +192,12 @@ fi
 
 TEKTON_RESULTS_DATABASE_USER="admin"
 TEKTON_RESULTS_DATABASE_PASSWORD="admin"
-oc new-project tekton-results | true
+oc new-project tekton-results || true
 oc create secret generic -n tekton-results tekton-results-database \
   --from-literal=db.user="$TEKTON_RESULTS_DATABASE_USER" \
   --from-literal=db.password="$TEKTON_RESULTS_DATABASE_PASSWORD" \
   --from-literal=db.host="tekton-results-database-service.tekton-results.svc.cluster.local" \
-  --from-literal=db.name="tekton_results" | true
+  --from-literal=db.name="tekton_results" || true
 
 # Create the root Application
 oc apply -k $ROOT/argo-cd-apps/app-of-app-sets/development
