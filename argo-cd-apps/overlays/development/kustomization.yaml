@@ -7,6 +7,8 @@ resources:
   - ../../base/member
   - ../../base/all-clusters
   - ../../base/quality-dashboard
+  - ../../base/s3/optional/minio
+  #- https://raw.githubusercontent.com/openshift-pipelines/pipeline-service/main/developer/openshift/gitops/argocd/minio/application.yaml
 patchesStrategicMerge:
   - delete-applications.yaml
 namespace: openshift-gitops

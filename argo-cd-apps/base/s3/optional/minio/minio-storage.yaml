@@ -1,0 +1,42 @@
+# Todo...
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: minio-storage
+spec:
+  generators:
+    - merge:
+        mergeKeys:
+          - nameNormalized
+        generators:
+          - clusters:
+              values:
+        #         sourceRoot: components/none...
+                environment: staging
+                clusterDir: ""
+          # - list:
+          #     elements: []
+  template:
+    metadata:
+      name: minio-storage-{{nameNormalized}}
+    spec:
+      project: default
+      source:
+        path: developer/openshift/gitops/argocd/minio
+        repoURL: https://github.com/openshift-pipelines/pipeline-service.git
+        targetRevision: main
+      destination:
+        namespace: default
+        server: '{{server}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: -1
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 3m
