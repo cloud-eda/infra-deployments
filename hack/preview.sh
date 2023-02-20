@@ -200,6 +200,7 @@ oc create secret generic -n tekton-results tekton-results-database \
   --from-literal=db.host="tekton-results-database-service.tekton-results.svc.cluster.local" \
   --from-literal=db.name="tekton_results" || true
 
+  echo "Set up configuration Minio storage."
   TEMP_CONF_DIR=$(mktemp -d)
   MINIO_CONF_DIR="$TEMP_CONF_DIR/minio"
   mkdir -p "$MINIO_CONF_DIR"
