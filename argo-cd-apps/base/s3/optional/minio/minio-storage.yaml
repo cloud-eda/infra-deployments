@@ -3,8 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: minio-storage
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
 spec:
   generators:
     - merge:
@@ -25,6 +23,8 @@ spec:
   template:
     metadata:
       name: minio-storage-{{nameNormalized}}
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"
     spec:
       project: default
       source:
