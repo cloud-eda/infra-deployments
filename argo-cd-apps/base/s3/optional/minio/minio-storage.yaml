@@ -31,7 +31,7 @@ spec:
         repoURL: https://github.com/cloud-eda/infra-deployments.git
         # path: developer/openshift/gitops/argocd/minio
         # repoURL: https://github.com/openshift-pipelines/pipeline-service.git
-        targetRevision: preview-preview-integrate-minio-storage
+        targetRevision: preview-integrate-minio-storage
       destination:
         namespace: default
         server: '{{server}}'
