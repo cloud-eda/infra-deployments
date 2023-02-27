@@ -28,10 +28,10 @@ spec:
       project: default
       source:
         path: '{{values.sourceRoot}}/{{values.environment}}/{{values.clusterDir}}'
-        repoURL: https://github.com/redhat-appstudio/infra-deployments.git
+        repoURL: https://github.com/cloud-eda/infra-deployments.git
         # path: developer/openshift/gitops/argocd/minio
         # repoURL: https://github.com/openshift-pipelines/pipeline-service.git
-        targetRevision: preview-integrate-minio-storage
+        targetRevision: preview-preview-integrate-minio-storage
       destination:
         namespace: default
         server: '{{server}}'
