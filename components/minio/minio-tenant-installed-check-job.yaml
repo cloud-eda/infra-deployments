@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: minio-tenant-installed-check
+  namespace: tekton-results
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  template:
+    spec:
+      containers:
+        - image: registry.redhat.io/openshift4/ose-cli:v4.12@sha256:9f0cdc00b1b1a3c17411e50653253b9f6bb5329ea4fb82ad983790a6dbf2d9ad
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "Waiting for minio tenant to be present"
+              oc get pods -n tekton-results
+          imagePullPolicy: Always
+          name: patch-chains-certs
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      # terminationGracePeriodSeconds: 30
+      serviceAccount: minio-tenant-checker
+      serviceAccountName: minio-tenant-checker

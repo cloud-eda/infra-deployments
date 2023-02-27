@@ -1,4 +1,3 @@
-# Todo...
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -11,8 +10,8 @@ spec:
         generators:
           - clusters:
               values:
-        #         sourceRoot: components/none...
-                environment: staging
+                sourceRoot: components/minio
+                environment: development
                 clusterDir: ""
           - list:
               elements:
@@ -28,8 +27,10 @@ spec:
     spec:
       project: default
       source:
-        path: developer/openshift/gitops/argocd/minio
-        repoURL: https://github.com/openshift-pipelines/pipeline-service.git
+        path: '{{values.sourceRoot}}/{{values.environment}}/{{values.clusterDir}}'
+        repoURL: https://github.com/redhat-appstudio/infra-deployments.git
+        # path: developer/openshift/gitops/argocd/minio
+        # repoURL: https://github.com/openshift-pipelines/pipeline-service.git
         targetRevision: main
       destination:
         namespace: default
