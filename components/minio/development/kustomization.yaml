@@ -3,5 +3,3 @@ kind: Kustomization
 
 resources:
   - git::https://github.com/openshift-pipelines/pipeline-service.git/developer/openshift/gitops/argocd/minio?ref=46cafe0bbd7abfaaadb304b06ac03b842ded6f13
-  - job-permissions.yaml
-  - minio-tenant-installed-check-job.yaml
