@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: minio-tenant-installed-check
+  name: minio-tenant-check
   namespace: tekton-results
   annotations:
     argocd.argoproj.io/sync-wave: "4"
@@ -23,7 +23,7 @@ spec:
                 printf '.'; sleep 5; \
                 i=$((i+1)) \
                 if [[ $i -eq "${numOfAttempts}" ]]; then \
-                  printf "\n[ERROR] Pod %s not found by timeout \n" "$label" >&2 \
+                  printf "\n[ERROR] Pod %s not found by timeout \n" "app=minio" >&2 \
                   oc -n "$ns" get events | grep Warning \
                   exit 1 \
                 fi \
