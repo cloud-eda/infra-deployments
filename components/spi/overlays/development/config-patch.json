@@ -2,12 +2,17 @@
   {
     "op": "replace",
     "path": "/data/VAULTHOST",
-    "value": "https://vault-spi-vault.apps.ci-ln-j98x312-72292.origin-ci-int-gce.dev.rhcloud.com"
+    "value": "https://vault-spi-vault.apps.ci-ln-8b8qdnb-76ef8.aws-2.ci.openshift.org"
   },
   {
     "op": "replace",
     "path": "/data/BASEURL",
-    "value": "https://spi-oauth-spi-system.apps.ci-ln-j98x312-72292.origin-ci-int-gce.dev.rhcloud.com"
+    "value": "https://spi-oauth-spi-system.apps.ci-ln-8b8qdnb-76ef8.aws-2.ci.openshift.org"
+  },
+  {
+    "op": "add",
+    "path": "/data/VAULTINSECURETLS",
+    "value": "true"
   },
   {
     "op": "add",

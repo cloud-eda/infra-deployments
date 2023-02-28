@@ -4,4 +4,4 @@
   value: https://github.com/cloud-eda/infra-deployments.git
 - op: replace
   path: /spec/template/spec/source/targetRevision
-  value: preview-integrate-minio-storage
+  value: preview-preview-integrate-minio-storage
