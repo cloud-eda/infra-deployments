@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: minio-tenant-check
+  name: minio-tenant-check-2
   namespace: tekton-results
   annotations:
     argocd.argoproj.io/sync-wave: "4"
@@ -14,16 +14,26 @@ spec:
             - /bin/bash
             - -c
             - |
-              printf "Waiting for minio tenant to be present";
-              curl https://raw.githubusercontent.com/openshift-pipelines/pipeline-service/main/operator/images/cluster-setup/content/bin/utils.sh --output /tmp/utils.sh;
+              printf "Waiting for minio tenant to be present "
 
-              source /tmp/utils.sh;
-              check_pod_by_label tekton-results "app=minio"
+              numOfAttempts=40;
+              i=0;
+              until [ -s /tmp/pod ];
+              do
+                printf '.'; sleep 10;
+                oc get pods -l "app=minio" -n "tekton-results" --no-headers -o custom-columns=':metadata.name' > /tmp/pod;
+                i=$((i+1));
+                if [[ $i -eq "${numOfAttempts}" ]]; then
+                  printf "\n[ERROR] Pod %s not found by timeout \n" "app=minio" >&2;
+                  exit 1;
+                fi
+              done
           imagePullPolicy: Always
           name: minio-tenant-checker
       dnsPolicy: ClusterFirst
       restartPolicy: OnFailure
-      backoffLimit: 5
-      # terminationGracePeriodSeconds: 30
+      backoffLimit: 1
+      #activeDeadlineSeconds: 30
+      terminationGracePeriodSeconds: 30
       serviceAccount: minio-tenant-checker
       serviceAccountName: minio-tenant-checker
