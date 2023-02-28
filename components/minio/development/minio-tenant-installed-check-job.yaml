@@ -14,26 +14,16 @@ spec:
             - /bin/bash
             - -c
             - |
-              echo "Waiting for minio tenant to be present";
-              oc get pods -n tekton-results;
-              numOfAttempts=40;
-              ns=tekton-results;
-              i=0;
-              
-              while [ -z "$(oc get pods -l app=minio -n $ns --no-headers -o custom-columns=':metadata.name')" ]; do
-                printf '.';
-                sleep 5;
-                i=$((i+1));
-                if [[ $i -eq "${numOfAttempts}" ]]; then
-                  printf "\n[ERROR] Pod %s not found by timeout \n" "app=minio" >&2;
-                  oc -n "$ns" get events | grep Warning;
-                  exit 1;
-                fi
-              done
+              printf "Waiting for minio tenant to be present";
+              curl https://raw.githubusercontent.com/openshift-pipelines/pipeline-service/main/operator/images/cluster-setup/content/bin/utils.sh --output /tmp/utils.sh;
+
+              source /tmp/utils.sh;
+              check_pod_by_label tekton-results "app=minio"
           imagePullPolicy: Always
           name: minio-tenant-checker
       dnsPolicy: ClusterFirst
       restartPolicy: OnFailure
+      backoffLimit: 5
       # terminationGracePeriodSeconds: 30
       serviceAccount: minio-tenant-checker
       serviceAccountName: minio-tenant-checker
