@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: minio-tenant-check-2
+  name: minio-tenant-check
   namespace: tekton-results
   annotations:
     argocd.argoproj.io/sync-wave: "4"
@@ -29,11 +29,15 @@ spec:
                   exit 1;
                 fi
               done
+              printf " OK.\n"
+
+              printf "Waiting for minio tenant to be Ready "
+              kubectl wait --for=condition=ready pod -l "app=minio" -n "tekton-results" --timeout=150s
+              printf " OK.\n"
           imagePullPolicy: Always
           name: minio-tenant-checker
       dnsPolicy: ClusterFirst
       restartPolicy: OnFailure
-      #activeDeadlineSeconds: 30
       terminationGracePeriodSeconds: 30
       serviceAccount: minio-tenant-checker
       serviceAccountName: minio-tenant-checker
