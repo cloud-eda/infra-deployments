@@ -27,7 +27,7 @@ spec:
       source:
         path: '{{values.sourceRoot}}/{{values.environment}}/{{values.clusterDir}}'
         repoURL: https://github.com/cloud-eda/infra-deployments.git
-        targetRevision: main
+        targetRevision: preview-preview-try-newer-main
       destination:
         namespace: default
         server: '{{server}}'
