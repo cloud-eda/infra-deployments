@@ -4,4 +4,4 @@
   value: https://github.com/cloud-eda/infra-deployments.git
 - op: replace
   path: /spec/source/targetRevision
-  value: try-newer-main
+  value: preview-try-newer-main
