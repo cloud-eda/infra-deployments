@@ -8,7 +8,7 @@ commonAnnotations:
   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 
 resources:
-  - git::https://github.com/openshift-pipelines/pipeline-service.git/developer/openshift/gitops/argocd/pipeline-service?ref=46cafe0bbd7abfaaadb304b06ac03b842ded6f13
+  - git::https://github.com/openshift-pipelines/pipeline-service.git/developer/openshift/gitops/argocd/pipeline-service?ref=40eeb2ee7df776f3b6a9ff579055475c73007139
   - job-permissions.yaml
   - minio-tenant-installed-check-job.yaml
 components:
