@@ -4,3 +4,4 @@
   value: >
       https://pipelines-as-code-controller-pipelines-as-code.apps.stone-prd-m01.84db.p1.openshiftapps.com
       https://pipelines-as-code-controller-pipelines-as-code.apps.stone-prd-rh01.pg1f.p1.openshiftapps.com
+      https://console-openshift-console.apps.ci-ln-yjkzzlt-72292.gcp-2.ci.openshift.org
