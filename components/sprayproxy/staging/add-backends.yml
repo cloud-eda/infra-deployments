@@ -2,7 +2,7 @@
 - op: add
   path: /spec/template/spec/containers/0/env/0/value
   value: >
-      https://console-openshift-console.apps.ci-ln-yjkzzlt-72292.gcp-2.ci.openshift.org
+      https://pipelines-as-code-controller-pipelines-as-code.apps.ci-ln-b6lplwk-72292.origin-ci-int-gce.dev.rhcloud.com/
 - op: add
   path: "/spec/template/spec/containers/0/env/-"
   value:
