@@ -1,12 +1,12 @@
 resources:
-  - https://github.com/redhat-appstudio/sprayproxy/config?ref=b488cf7dada7cdf4767fd32f041c6ea3507f0043
+  - https://github.com/AndrienkoAleksandr/sprayproxy/config?ref=48bb63fe3f24be71d7fd407ed49819a09b93eee0
 
 namespace: sprayproxy
 
 images:
   - name: ko://github.com/redhat-appstudio/sprayproxy
-    newName: quay.io/redhat-appstudio/sprayproxy
-    newTag: b488cf7dada7cdf4767fd32f041c6ea3507f0043
+    newName: quay.io/aandriienko/sprayproxy
+    newTag: latest
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
