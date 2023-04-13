@@ -2,5 +2,9 @@
 - op: add
   path: /spec/template/spec/containers/0/env/0/value
   value: >
-    https://pipelines-as-code-controller-pipelines-as-code.apps.stone-stg-m01.7ayg.p1.openshiftapps.com
-    https://pipelines-as-code-controller-pipelines-as-code.apps.stone-stg-rh01.l2vh.p1.openshiftapps.com
+      https://pipelines-as-code-controller-pipelines-as-code.apps.ci-ln-ly3bgr2-72292.origin-ci-int-gce.dev.rhcloud.com
+- op: add
+  path: "/spec/template/spec/containers/0/env/-"
+  value:
+    name: SPRAYPROXY_SERVER_INSECURE_SKIP_TLS_VERIFY
+    value: "true"
