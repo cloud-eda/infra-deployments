@@ -6,7 +6,7 @@ resources:
 images:
   - name: ko://github.com/redhat-appstudio/sprayproxy
     newName: quay.io/redhat-appstudio/sprayproxy
-    newTag: 7ccf4727853fd9a639025e495342f6bbb46b5fe5
+    newTag: e7703f63751ee924dcbfcd081e3bc90d4d284961
 
 patches:
   - path: add-backends.yml
