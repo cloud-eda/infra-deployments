@@ -1,5 +1,5 @@
 resources:
-  - https://github.com/redhat-appstudio/sprayproxy/config?ref=7ccf4727853fd9a639025e495342f6bbb46b5fe5
+  - https://github.com/redhat-appstudio/sprayproxy/config?ref=e7703f63751ee924dcbfcd081e3bc90d4d284961
 
 namespace: sprayproxy
 
