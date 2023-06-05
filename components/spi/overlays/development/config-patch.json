@@ -2,12 +2,12 @@
   {
     "op": "replace",
     "path": "/data/VAULTHOST",
-    "value": "https://vault-spi-vault.apps.a9cd4187cbb1425d958c.hypershift.aws-2.ci.openshift.org"
+    "value": "https://vault-spi-vault.apps.ci-ln-bxc2x52-72292.origin-ci-int-gce.dev.rhcloud.com"
   },
   {
     "op": "replace",
     "path": "/data/BASEURL",
-    "value": "https://spi-oauth-spi-system.apps.a9cd4187cbb1425d958c.hypershift.aws-2.ci.openshift.org"
+    "value": "https://spi-oauth-spi-system.apps.ci-ln-bxc2x52-72292.origin-ci-int-gce.dev.rhcloud.com"
   },
   {
     "op": "add",
@@ -17,6 +17,11 @@
   {
     "op": "add",
     "path": "/data/ENABLEREMOTESECRETS",
+    "value": "true"
+  },
+  {
+    "op": "add",
+    "path": "/data/VAULTINSECURETLS",
     "value": "true"
   },
   {
